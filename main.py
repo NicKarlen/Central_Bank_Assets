@@ -3,9 +3,15 @@ from xml.dom import minidom
 import pandas as pd
 from datetime import date, datetime
 
+"""
+    Tutorials I used:
+    https://www.youtube.com/watch?v=g7n1MZyYjOM 
+
+"""
+
 def format_df(df):
     # Adjust the date
-    df['Datum'] = pd.to_datetime(df['Datum'])
+    df['Date'] = pd.to_datetime(df['Date'])
     # Adjust the type
     df['Total Assets'] = df['Total Assets'].astype('float')
     # return dataframe
@@ -46,7 +52,7 @@ def get_data_FED():
         dict_data_FED[ele.attributes['index'].value] = ele.attributes['value'].value
 
     # Creat a dataframe from a dict
-    df = pd.DataFrame(dict_data_FED.items(), columns=['Datum','Total Assets'])
+    df = pd.DataFrame(dict_data_FED.items(), columns=['Date','Total Assets'])
 
     # return the formatted dataframe
     return format_df(df)
@@ -74,7 +80,7 @@ def get_data_SNB():
     # Drop unused column
     df.drop('D0', axis="columns", inplace=True)
     # Rename columns
-    df.columns=['Datum', 'Total Assets']
+    df.columns=['Date', 'Total Assets']
 
     # return the formatted dataframe
     return format_df(df)
@@ -102,12 +108,6 @@ def get_data_ECB():
     df = pd.read_csv("Data/data_ecb.csv",sep="," , header=0)
 
     # Rename columns
-    df.columns=['Datum', 'Total Assets']
+    df.columns=['Date', 'Total Assets']
 
     return format_df(df)
-
-
-print(get_data_ECB())
-
-# print(get_data_FED())
-# print(get_data_SNB())
