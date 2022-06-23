@@ -183,8 +183,9 @@ class fx_rates:
             diff.append(abs(tstamp-t))
         # get min difference
         min_value = min(diff)
-        # build the date-string from the closed Unix 
+        # get the actual Unix timestamp that is closesd to the date
         date = self.unix_timestamps[diff.index(min_value)]
+        # Access the value with the built key(date)
         key = str(datetime.utcfromtimestamp(date).date())
 
         return self.rates[key]
