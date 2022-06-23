@@ -7,6 +7,8 @@ df_snb = main.get_data_SNB()
 df_fed = main.get_data_FED()
 df_boj = main.get_data_BOJ()
 
+print(df_boj)
+
 fig, ax = plt.subplots()
 
 df_ecb.plot(kind='line', x='Date', y='Total Assets', xlabel='Date', ylabel='Millions', legend='True', ax=ax)

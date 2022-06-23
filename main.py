@@ -2,6 +2,7 @@ import requests
 from xml.dom import minidom
 import pandas as pd
 from datetime import date, datetime
+import json
 
 """
     Tutorials I used:
@@ -140,4 +141,61 @@ def get_data_BOJ():
 
     return format_df(df)
 
+# class to get the fx rates from any currency to the USD on a monthly bases
+class fx_rates:
+    def __init__(self, b):
+        self.base = b
+        self.quote = 'USD'
+        self.url = f'https://api.ofx.com/PublicSite.ApiService//SpotRateHistory/allTime/{self.base}/{self.quote}?DecimalPlaces=6&ReportingInterval=monthly&format=json'
+        self.rates, self.unix_timestamps = self.convert_json_to_dict()
+
+    # get the data via API call
+    def get_monthly_rates(self):
+        # Request the data
+        req = requests.get(self.url)
+        # convert to json
+        json_res = json.loads(req.text)
+        # get the historical-data from the json response
+        return json_res['HistoricalPoints']
+
+    # convert the data from the API request in to a dictionary
+    def convert_json_to_dict(self):
+        # get rates
+        json_res = self.get_monthly_rates()
+        # empty dict
+        res = {}
+        unix_timestamps = []
+        # loop throu and create dict
+        for ele in json_res:
+            time = int(str(ele['PointInTime'])[0:-3])
+            unix_timestamps.append(time)
+            timestamp = str(datetime.utcfromtimestamp(time).date())
+            res[timestamp] = ele['InterbankRate']
+        return res, unix_timestamps
+
+    # return the rate closesd to the date given
+    def get_rate(self, date):
+        # build unix timestamp from date given
+        tstamp = datetime.timestamp(pd.to_datetime(date))
+        # check where the abs difference is the smallest
+        diff = []
+        for t in self.unix_timestamps:
+            diff.append(abs(tstamp-t))
+        # get min difference
+        min_value = min(diff)
+        # build the date-string from the closed Unix 
+        date = self.unix_timestamps[diff.index(min_value)]
+        key = str(datetime.utcfromtimestamp(date).date())
+
+        return self.rates[key]
+
+            
+
+eur = fx_rates("EUR")
+print(datetime.utcnow())
+print(eur.get_rate('2022-06-14'))
+print(datetime.utcnow())
+
+# chf = fx_rates("CHF")
+# jpy = fx_rates("JPY")
 
