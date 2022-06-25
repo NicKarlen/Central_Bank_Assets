@@ -2,12 +2,13 @@ import main
 import matplotlib.pyplot as plt
 
 # get data with the functions in main.py
-df_ecb = main.get_data_ECB()
-df_snb = main.get_data_SNB()
-df_fed = main.get_data_FED()
-df_boj = main.get_data_BOJ()
 
-print(df_boj)
+total_assets = main.Central_bank_assets()
+
+df_ecb = total_assets.ecb
+df_snb = total_assets.snb
+df_fed = total_assets.fed
+df_boj = total_assets.boj
 
 fig, ax = plt.subplots()
 
@@ -21,3 +22,8 @@ ax.legend(['ECB', 'SNB', 'FED', 'BOJ'])
 fig.suptitle('Central Bank Assets')
 
 plt.show()
+
+total_assets.save_to_db('ecb')
+total_assets.save_to_db('snb')
+total_assets.save_to_db('fed')
+total_assets.save_to_db('boj')

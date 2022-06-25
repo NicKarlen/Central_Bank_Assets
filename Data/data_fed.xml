@@ -779,6 +779,7 @@
       <observation index="1-Jun-22" value="8915050.00" />
       <observation index="8-Jun-22" value="8918254.00" />
       <observation index="15-Jun-22" value="8932420.00" />
+      <observation index="22-Jun-22" value="8934346.00" />
     </series>
   </chart>
   <caption>In millions of dollars</caption>
@@ -1561,6 +1562,7 @@
       <observation index="1-Jun-22" value="8915050.00" />
       <observation index="8-Jun-22" value="8918254.00" />
       <observation index="15-Jun-22" value="8932420.00" />
+      <observation index="22-Jun-22" value="8934346.00" />
     </series>
     <series name="RESPPALG_N_WW" description="Securities Held Outright" frequency="WEEKLY(WEDNESDAY)">
       <observation index="1-Aug-07" value="790802.00" />
@@ -2340,6 +2342,7 @@
       <observation index="1-Jun-22" value="8480572.00" />
       <observation index="8-Jun-22" value="8481186.00" />
       <observation index="15-Jun-22" value="8492644.00" />
+      <observation index="22-Jun-22" value="8494506.00" />
     </series>
     <series name="ALLLIQUIDITY" description="All Liquidity Facilities*" frequency="WEEKLY(WEDNESDAY)">
       <observation index="1-Aug-07" value="235.00" />
@@ -3119,6 +3122,7 @@
       <observation index="1-Jun-22" value="2196.00" />
       <observation index="8-Jun-22" value="2519.00" />
       <observation index="15-Jun-22" value="5049.00" />
+      <observation index="22-Jun-22" value="4492.00" />
     </series>
     <series name="SPECSUPPORT" description="Support for Specific Institutions**" frequency="WEEKLY(WEDNESDAY)">
       <observation index="1-Aug-07" value="0" />
@@ -4562,6 +4566,7 @@
       <observation index="1-Jun-22" value="2196.00" />
       <observation index="8-Jun-22" value="2519.00" />
       <observation index="15-Jun-22" value="5049.00" />
+      <observation index="22-Jun-22" value="4492.00" />
     </series>
     <series name="RESPPALT_N_WW" description="Term Auction Credit" frequency="WEEKLY(WEDNESDAY)">
       <observation index="1-Aug-07" value="0" />
@@ -5341,6 +5346,7 @@
       <observation index="1-Jun-22" value="0" />
       <observation index="8-Jun-22" value="0" />
       <observation index="15-Jun-22" value="0" />
+      <observation index="22-Jun-22" value="0" />
     </series>
     <series name="H0_RESPPAACH_N_WW" description="Commercial Paper Funding Facility" frequency="WEEKLY(WEDNESDAY)">
       <observation index="1-Aug-07" value="0" />
@@ -6283,6 +6289,7 @@
       <observation index="1-Jun-22" value="183.00" />
       <observation index="8-Jun-22" value="183.00" />
       <observation index="15-Jun-22" value="199.00" />
+      <observation index="22-Jun-22" value="197.00" />
     </series>
     <series name="RESPPALDT_N_WW" description="Term Asset-Backed Securities Loan Facility" frequency="WEEKLY(WEDNESDAY)">
       <observation index="1-Aug-07" value="0" />
@@ -7062,6 +7069,7 @@
       <observation index="1-Jun-22" value="1141.00" />
       <observation index="8-Jun-22" value="1141.00" />
       <observation index="15-Jun-22" value="1141.00" />
+      <observation index="22-Jun-22" value="1139.00" />
     </series>
   </chart>
   <caption>In millions of dollars</caption>
@@ -10674,6 +10682,7 @@
       <observation index="1-Jun-22" value="2280223.00" />
       <observation index="8-Jun-22" value="2278876.00" />
       <observation index="15-Jun-22" value="2276909.00" />
+      <observation index="22-Jun-22" value="2278628.00" />
     </series>
     <series name="RESPPLLDD_N_WW" description=" Deposits of Depository Institutions" frequency="WEEKLY(WEDNESDAY)">
       <observation index="1-Aug-07" value="17084.00" />
@@ -11453,6 +11462,7 @@
       <observation index="1-Jun-22" value="3357395.00" />
       <observation index="8-Jun-22" value="3292602.00" />
       <observation index="15-Jun-22" value="3189605.00" />
+      <observation index="22-Jun-22" value="3115594.00" />
     </series>
     <series name="TREASURYBALANCE" description="Treasury Balance" frequency="WEEKLY(WEDNESDAY)">
       <observation index="1-Aug-07" value="4769.00" />
@@ -12232,6 +12242,7 @@
       <observation index="1-Jun-22" value="780575.00" />
       <observation index="8-Jun-22" value="683892.00" />
       <observation index="15-Jun-22" value="769937.00" />
+      <observation index="22-Jun-22" value="745052.00" />
     </series>
   </chart>
 </page>
