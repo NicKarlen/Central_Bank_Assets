@@ -22,7 +22,7 @@ class Central_bank_assets:
         self.jpy_rates = Fx_rates('JPY')
         self.chf_rates = Fx_rates('CHF')
 
-    def save_to_db(self,name):
+    def save_to_db(self, name:str):
         if name == 'ecb': df = self.ecb
         elif name == 'fed': df = self.fed
         elif name == 'boj': df = self.boj
@@ -166,7 +166,7 @@ class Central_bank_assets:
 
 # class to get the fx rates from any currency to the USD on a monthly bases
 class Fx_rates:
-    def __init__(self, b):
+    def __init__(self, b:str):
         self.base = b
         self.quote = 'USD'
         self.url = f'https://api.ofx.com/PublicSite.ApiService//SpotRateHistory/allTime/{self.base}/{self.quote}?DecimalPlaces=6&ReportingInterval=monthly&format=json'
@@ -197,7 +197,7 @@ class Fx_rates:
         return res, unix_timestamps
 
     # return the rate closesd to the date given
-    def get_rate(self, date):
+    def get_rate(self, date:str):
         # build unix timestamp from date given
         tstamp = datetime.timestamp(pd.to_datetime(date))
         # check where the abs difference is the smallest
