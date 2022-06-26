@@ -13,14 +13,27 @@ import sqlite3
 
 class Central_bank_assets:
     def __init__(self):
-        self.fed = self.get_data_FED()
-        self.ecb = self.get_data_ECB()
-        self.boj = self.get_data_BOJ()
-        self.snb = self.get_data_SNB()
-
         self.eur_rates = Fx_rates('EUR')
         self.jpy_rates = Fx_rates('JPY')
         self.chf_rates = Fx_rates('CHF')
+
+        self.fed = self.get_data_FED()
+        self.ecb = self.get_data_ECB()
+        self.ecb = self.convert_to_usd(self.eur_rates, self.ecb)
+        self.boj = self.get_data_BOJ()
+        self.boj = self.convert_to_usd(self.jpy_rates, self.boj)
+        self.snb = self.get_data_SNB()
+        self.snb = self.convert_to_usd(self.chf_rates, self.snb)
+
+
+    def convert_to_usd(self, rates, df):
+        df['Total Assets USD'] = 0
+        def conversion_on_df(row):
+            row['Total Assets USD'] = row['Total Assets'] * rates.get_rate(row['Date'])
+            return row
+        df = df.apply(conversion_on_df, axis="columns")
+
+        return df
 
     def save_to_db(self, name:str):
         if name == 'ecb': df = self.ecb
@@ -28,6 +41,7 @@ class Central_bank_assets:
         elif name == 'boj': df = self.boj
         elif name == 'snb': df = self.snb
         else: print("ERROR: no data from that central bank")
+
         con = sqlite3.connect('database.db')
         df.to_sql(name=f'df_{name}', con=con, if_exists="replace")
         con.close()
